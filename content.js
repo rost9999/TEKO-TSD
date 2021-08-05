@@ -32,6 +32,19 @@ function download() {
 
     document.body.removeChild(element);
 }
+function getSum(){
+    console.log('getSum',count)
+    let numbers = [];
+    for (let i=1;i<=count;i+=1){
+        let num = parseFloat(document.getElementById('price'+i).innerText)
+        if (!isNaN(num)){
+            numbers.push(num);
+        }
+    }
+    let sum = numbers.reduce((a, b) => a + b, 0);
+    document.getElementById('Sum').innerText = sum.toFixed(2);
+
+}
 
 function inputFocus() {
     let val = parseInt(document.getElementById(this.id).innerText);
@@ -42,6 +55,7 @@ function inputFocus() {
 
     if (val in article) {
         document.getElementById('name' + this.totalCount).innerHTML = article[val];
+        document.getElementById('article' + this.totalCount).focus();
     } else {
         document.getElementById('name' + this.totalCount).innerHTML = 'помилка';
     }
@@ -66,6 +80,9 @@ function addEmptyRow() {
     let countOfProduct = document.createElement("th");
     countOfProduct.setAttribute("contenteditable", "true");
     countOfProduct.id = "product" + count;
+    let price = document.createElement("th");
+    price.setAttribute("contenteditable", "true");
+    price.id = "price" + count;
     // let deleteBut = document.createElement('th');
     // deleteBut.innerHTML = '<button type="button" class="btn btn-danger btn-sm" onclick="remove(this)">x</button>';
     // deleteBut.totalCount = count;
@@ -75,12 +92,14 @@ function addEmptyRow() {
     row.append(article);
     row.append(name);
     row.append(countOfProduct);
-    // row.append(deleteBut);
+    row.append(price);
 
     table.append(row);
 
 
     document.getElementById(article.id).addEventListener("blur", inputFocus);
+    document.getElementById(price.id).addEventListener("blur", getSum);
+    article.focus();
 }
 
 const buttonMag = document.getElementById("addRow").addEventListener("click", addEmptyRow);
