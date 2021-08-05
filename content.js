@@ -37,7 +37,8 @@ function getSum(){
     let numbers = [];
     for (let i=1;i<=count;i+=1){
         let num = parseFloat(document.getElementById('price'+i).innerText)
-        if (!isNaN(num)){
+        let count = parseFloat(document.getElementById('product'+i).innerText)
+        if (!isNaN(num*count)){
             numbers.push(num);
         }
     }
