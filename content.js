@@ -55,7 +55,7 @@ function inputFocus() {
 
     if (val in article) {
         document.getElementById('name' + this.totalCount).innerHTML = article[val];
-        document.getElementById('article' + this.totalCount).focus();
+        document.getElementById('product' + this.totalCount).focus();
     } else {
         document.getElementById('name' + this.totalCount).innerHTML = 'помилка';
     }
