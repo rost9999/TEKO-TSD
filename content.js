@@ -55,7 +55,6 @@ function inputFocus() {
 
     if (val in article) {
         document.getElementById('name' + this.totalCount).innerHTML = article[val];
-        document.getElementById('product' + this.totalCount).focus();
     } else {
         document.getElementById('name' + this.totalCount).innerHTML = 'помилка';
     }
@@ -99,7 +98,6 @@ function addEmptyRow() {
 
     document.getElementById(article.id).addEventListener("blur", inputFocus);
     document.getElementById(price.id).addEventListener("blur", getSum);
-    article.focus();
 }
 
 const buttonMag = document.getElementById("addRow").addEventListener("click", addEmptyRow);
