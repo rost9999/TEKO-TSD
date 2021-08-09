@@ -38,8 +38,8 @@ function getSum(){
     for (let i=1;i<=count;i+=1){
         let num = parseFloat(document.getElementById('price'+i).innerText)
         let count = parseFloat(document.getElementById('product'+i).innerText)
-        if (!isNaN(num*count)){
-            numbers.push(num);
+        if (!isNaN(num)){
+            numbers.push(num*count);
         }
     }
     let sum = numbers.reduce((a, b) => a + b, 0);
@@ -56,6 +56,7 @@ function inputFocus() {
 
     if (val in article) {
         document.getElementById('name' + this.totalCount).innerHTML = article[val];
+        document.getElementById('name' + this.totalCount)
     } else {
         document.getElementById('name' + this.totalCount).innerHTML = 'помилка';
     }
@@ -99,6 +100,7 @@ function addEmptyRow() {
 
     document.getElementById(article.id).addEventListener("blur", inputFocus);
     document.getElementById(price.id).addEventListener("blur", getSum);
+    article.focus();
 }
 
 const buttonMag = document.getElementById("addRow").addEventListener("click", addEmptyRow);
