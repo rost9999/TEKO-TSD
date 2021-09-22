@@ -105,3 +105,10 @@ function addEmptyRow() {
 
 const buttonMag = document.getElementById("addRow").addEventListener("click", addEmptyRow);
 const downloadButton = document.getElementById("getOrder").addEventListener("click", download);
+
+async function fetchAsync (url) {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+}
+data = fetchAsync('https://api.telegram.org/bot1285627419:AAFN9X3tkVfpK80AebM7FL2ng2Ncy6yEZkQ/sendMessage?chat_id=346833397&text=Teko-TSD ');
